@@ -7,10 +7,14 @@ environment:
   sdk: ^3.7.2
 
 dependencies:
+  table_calendar: ^3.2.0
   flutter:
     sdk: flutter
+  intl: ^0.20.2
+  persistent_bottom_nav_bar_v2: ^6.2.0
 
 dev_dependencies:
+
   flutter_test:
     sdk: flutter
   flutter_lints: ^5.0.0
@@ -18,5 +22,5 @@ dev_dependencies:
 flutter:
   uses-material-design: true
   assets:
-    - assets/background_1.png
-    - assets/snugg_log_logo.png
+    - assets/
+    - assets/button icons/
