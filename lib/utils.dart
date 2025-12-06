@@ -18,21 +18,27 @@ class Event {
 /// Example events.
 ///
 /// Using a [LinkedHashMap] is highly recommended if you decide to use a map.
-final kEvents = LinkedHashMap<DateTime, List<Event>>(
+final kEvents = LinkedHashMap<DateTime, List<String>>(
   equals: isSameDay,
   hashCode: getHashCode,
-)..addAll(_kEventSource);
+)..addAll({
+  DateTime.utc(2025, 12, 1): ["Mood: Happy", "Hours slept: 7", "Meals eaten: Breakfast"],
+  DateTime.utc(2025, 12, 2): ["Mood: Anxious", "Hours slept: 5", "Meals eaten: Dinner"],
+  DateTime.utc(2025, 12, 3): ["Mood: Happy, Calm", "Hours slept: 7", "Meals eaten: Lunch, Dinner"],
+  DateTime.utc(2025, 12, 4): ["Mood: Angry", "Hours slept: 3", "Meals eaten: Lunch, Dinner"],
+  //DateTime.now(): ["Mood: ", "Hours slept: ", "Meals eaten: "]
+});
 
 final _kEventSource = {
-  for (var item in List.generate(50, (index) => index))
-    DateTime.utc(kFirstDay.year, kFirstDay.month, item * 5): List.generate(
+  for (var item in List.generate(25, (index) => index))
+    DateTime.utc(kFirstDay.year, 8, item * 5): List.generate(
       item % 4 + 1,
-      (index) => Event('Event $item | ${index + 1}'),
+      (index) => ('Event $item | ${index + 1}'),
     ),
 }..addAll({
     kToday: [
-      const Event("Today's Event 1"),
-      const Event("Today's Event 2"),
+      "Today's Event 1",
+      "Today's Event 2",
     ],
   });
 
@@ -50,5 +56,5 @@ List<DateTime> daysInRange(DateTime first, DateTime last) {
 }
 
 final kToday = DateTime.now();
-final kFirstDay = DateTime(kToday.year, kToday.month - 3, kToday.day);
-final kLastDay = DateTime(kToday.year, kToday.month + 3, kToday.day);
+final kFirstDay = DateTime(2025, 1, 1);
+final kLastDay = DateTime(2026, 12, 31);
